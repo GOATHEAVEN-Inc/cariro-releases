@@ -1,18 +1,18 @@
 {
-  "version": "0.1.17",
+  "version": "0.1.18",
   "files": [
     {
-      "url": "https://github.com/GOATHEAVEN-Inc/cariro-releases/releases/download/v0.1.17/CARIRO-0.1.17-arm64.zip",
-      "sha512": "I3pDOEX+GB9vu1lZoXOg00uH7sDa8/buPYD71YYcwkeq140zcctGEv7F+Z/E8lgsES4drITJDUKMx5tWw4uNWQ==",
-      "size": 474703945
+      "url": "https://github.com/GOATHEAVEN-Inc/cariro-releases/releases/download/v0.1.18/CARIRO-0.1.18-arm64.zip",
+      "sha512": "QPI+eRkiaXpG/Bsm/ELJ9IqKT2k0vxz+LbdqqSitbRLxCwFg3P4tZd98dmO8InrJBthrt4M4UwJEtaagZE3TFQ==",
+      "size": 474702770
     },
     {
-      "url": "https://github.com/GOATHEAVEN-Inc/cariro-releases/releases/download/v0.1.17/CARIRO-0.1.17-arm64.dmg",
-      "sha512": "ojhmRE3bH1OKXIc7hCmd6a4UjiiEJiUESNk+Ec+Xir/f+klu69846Chj8KKJnEdmr0JBFg+vMOpqx4Dr1OILLQ==",
-      "size": 495838100
+      "url": "https://github.com/GOATHEAVEN-Inc/cariro-releases/releases/download/v0.1.18/CARIRO-0.1.18-arm64.dmg",
+      "sha512": "hYGQZE99qJfZ+gD2c8NjFqHVpAxgGvBYmU04QjD4T9gU2NCUqS/c0U+YF8dLU9tXuQQDVqvrgYebAlzUUjhsfA==",
+      "size": 495837037
     }
   ],
-  "path": "https://github.com/GOATHEAVEN-Inc/cariro-releases/releases/download/v0.1.17/CARIRO-0.1.17-arm64.zip",
-  "sha512": "I3pDOEX+GB9vu1lZoXOg00uH7sDa8/buPYD71YYcwkeq140zcctGEv7F+Z/E8lgsES4drITJDUKMx5tWw4uNWQ==",
-  "releaseDate": "2026-10-29T08:40:20.976Z"
+  "path": "https://github.com/GOATHEAVEN-Inc/cariro-releases/releases/download/v0.1.18/CARIRO-0.1.18-arm64.zip",
+  "sha512": "QPI+eRkiaXpG/Bsm/ELJ9IqKT2k0vxz+LbdqqSitbRLxCwFg3P4tZd98dmO8InrJBthrt4M4UwJEtaagZE3TFQ==",
+  "releaseDate": "2026-10-29T13:42:27.854Z"
 }
