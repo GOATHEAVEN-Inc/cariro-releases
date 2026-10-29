@@ -1,0 +1,18 @@
+{
+  "version": "0.1.16",
+  "files": [
+    {
+      "url": "https://github.com/GOATHEAVEN-Inc/cariro-releases/releases/download/v0.1.16/CARIRO-0.1.16-arm64.zip",
+      "sha512": "vQvEQE4M3Sb0KtWWOXeNCv4kJFDoX7qY2h/nWeZndg7vF0Z2jVtu9Dx7he2d1j7lXKr4u+6GY9UsqFNvvH3ing==",
+      "size": 472607000
+    },
+    {
+      "url": "https://github.com/GOATHEAVEN-Inc/cariro-releases/releases/download/v0.1.16/CARIRO-0.1.16-arm64.dmg",
+      "sha512": "RpSZZqSJTj5m6BMKgn9ATdUMsTvipyqpL6hdOHHeFEpR5Bf15TpQnpGuiRUMzmRiMKyoeHfkGkVmT13/oywHyg==",
+      "size": 493744947
+    }
+  ],
+  "path": "https://github.com/GOATHEAVEN-Inc/cariro-releases/releases/download/v0.1.16/CARIRO-0.1.16-arm64.zip",
+  "sha512": "vQvEQE4M3Sb0KtWWOXeNCv4kJFDoX7qY2h/nWeZndg7vF0Z2jVtu9Dx7he2d1j7lXKr4u+6GY9UsqFNvvH3ing==",
+  "releaseDate": "2026-10-29T05:20:51.050Z"
+}
