@@ -1,0 +1,126 @@
+<!doctype html>
+<!--
+  CARIRO · Google Drive 파일 선택 창(Google Picker). https://cariro.goatheaven.com/drive-picker.html 로 공개한다.
+  카리로 앱(main/drive-window.ts openDrivePicker)이 이 주소를 카리로 창으로 열고, 전용 프리로드(preload/drive-picker.ts)가
+  window.cariroDrivePicker 를 이 주소의 맨 위 프레임에만 내놓는다. 토큰 · 키 · 앱 번호는 그 다리로만 받는다 - 이 파일에는 비밀값이 없고, 주소에도 넣지 않는다.
+  카리로 밖(일반 브라우저)에서 열면 안내만 보인다. 고른 파일의 번호 · 이름 · 형식만 앱으로 돌려주고, 받기는 앱이 drive.file 토큰으로 한다.
+-->
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="robots" content="noindex">
+<title>Google Drive 파일 고르기 · CARIRO</title>
+<style>
+  :root { color-scheme: light dark; --bg: #ffffff; --fg: #191f28; --sub: #6b7684; --line: #e5e8eb; --button: #f2f4f6; }
+  @media (prefers-color-scheme: dark) { :root { --bg: #17171c; --fg: #f2f4f6; --sub: #9ea6b0; --line: #2c2c35; --button: #2c2c35; } }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: var(--bg); color: var(--fg); font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Malgun Gothic", sans-serif; }
+  main { min-height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; padding: 24px 16px; text-align: center; word-break: keep-all; }
+  p { margin: 0; max-width: 420px; }
+  .sub { color: var(--sub); font-size: 13px; }
+  .actions { display: flex; gap: 8px; }
+  button { font: inherit; padding: 8px 16px; border-radius: 10px; border: 1px solid var(--line); background: var(--button); color: var(--fg); cursor: pointer; }
+  button:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+</style>
+</head>
+<body>
+<main>
+  <p id="status" role="status" aria-live="polite">파일 선택 창을 여는 중이에요…</p>
+  <p id="hint" class="sub">고른 파일만 카리로가 받아요. 다른 파일은 볼 수 없어요.</p>
+  <div class="actions">
+    <button type="button" id="retry" hidden>다시 열기</button>
+    <button type="button" id="close" hidden>닫기</button>
+  </div>
+</main>
+<script>
+(() => {
+  'use strict'
+  const bridge = window.cariroDrivePicker
+  const status = document.getElementById('status')
+  const retry = document.getElementById('retry')
+  const close = document.getElementById('close')
+  const say = (text) => { status.textContent = text }
+  if (!bridge || typeof bridge.config !== 'function' || typeof bridge.finish !== 'function') {
+    say('이 화면은 카리로 앱 안에서만 열려요.')
+    document.getElementById('hint').textContent = '카리로 사무실 메일 카드에서 [Google 파일 선택 창 열기]를 눌러 주세요.'
+    return
+  }
+  let config = null
+  let finished = false
+  const finish = (result) => { if (finished) return; finished = true; bridge.finish(result) }
+  close.addEventListener('click', () => finish({ action: 'cancel' }))
+  const failed = () => {
+    say('파일 선택 창을 열지 못했어요. 인터넷 연결을 확인하고 다시 열어 주세요.')
+    retry.hidden = false
+    close.hidden = false
+  }
+  const loadScript = (src) => new Promise((resolve, reject) => {
+    const script = document.createElement('script')
+    script.src = src
+    script.async = true
+    script.onload = resolve
+    script.onerror = () => reject(new Error('script'))
+    document.head.appendChild(script)
+  })
+  const loadPicker = () => new Promise((resolve, reject) => {
+    window.gapi.load('picker', { callback: resolve, onerror: reject, timeout: 15000, ontimeout: reject })
+  })
+  const picked = (data) => {
+    const picker = window.google.picker
+    const action = data[picker.Response.ACTION]
+    if (action === picker.Action.PICKED) {
+      const docs = (data[picker.Response.DOCUMENTS] || []).slice(0, 20).map((doc) => ({
+        id: String(doc[picker.Document.ID] || ''),
+        name: String(doc[picker.Document.NAME] || ''),
+        mimeType: String(doc[picker.Document.MIME_TYPE] || ''),
+      }))
+      say('고른 파일을 카리로로 보내는 중이에요…')
+      finish({ action: 'picked', docs })
+    } else if (action === picker.Action.CANCEL) {
+      say('고르지 않고 닫았어요.')
+      finish({ action: 'cancel' })
+    }
+  }
+  const open = () => {
+    const picker = window.google.picker
+    const mine = new picker.DocsView(picker.ViewId.DOCS).setIncludeFolders(true).setSelectFolderEnabled(false).setMode(picker.DocsViewMode.LIST)
+    const shared = new picker.DocsView(picker.ViewId.DOCS).setEnableDrives(true).setIncludeFolders(true).setSelectFolderEnabled(false)
+    new picker.PickerBuilder()
+      .setOAuthToken(config.token)
+      .setDeveloperKey(config.apiKey)
+      .setAppId(config.appId)
+      .setLocale(config.locale || 'ko')
+      .setTitle('카리로로 가져올 파일을 골라 주세요')
+      .addView(mine)
+      .addView(shared)
+      .enableFeature(picker.Feature.MULTISELECT_ENABLED)
+      .enableFeature(picker.Feature.SUPPORT_DRIVES)
+      .setMaxItems(10)
+      .setOrigin(window.location.origin)
+      .setCallback(picked)
+      .build()
+      .setVisible(true)
+    say('Google Drive 에서 파일을 골라 주세요.')
+    close.hidden = false
+  }
+  const start = () => {
+    retry.hidden = true
+    say('파일 선택 창을 여는 중이에요…')
+    const ready = config ? Promise.resolve(config) : bridge.config().then((value) => { config = value; return value })
+    ready
+      .then((value) => {
+        if (!value || typeof value.token !== 'string' || typeof value.apiKey !== 'string' || typeof value.appId !== 'string') throw new Error('config')
+        return window.gapi ? null : loadScript('https://apis.google.com/js/api.js')
+      })
+      .then(() => (window.google && window.google.picker ? null : loadPicker()))
+      .then(open)
+      .catch(failed)
+  }
+  retry.addEventListener('click', start)
+  start()
+})()
+</script>
+</body>
+</html>
