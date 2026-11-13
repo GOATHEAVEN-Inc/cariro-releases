@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>카리로 개인정보처리방침</title>
+<meta name="description" content="카리로(CARIRO) 개인정보처리방침과 Google 사용자 데이터 처리 기준">
+<link rel="canonical" href="https://cariro.goatheaven.com/privacy.html">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<style>
+:root {
+  --bg: #ffffff; --soft: #f9fafb; --gray: #f2f4f6; --line: #e5e8eb;
+  --ink: #191f28; --body: #333d4b; --sub: #4e5968; --muted: #646e7b; --blue: #3182f6;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--body); font: 16px/1.7 Pretendard, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; }
+main { max-width: 760px; margin: 0 auto; padding: 56px 20px 80px; }
+a { color: var(--blue); }
+h1 { color: var(--ink); font-size: 30px; line-height: 1.3; margin: 0 0 8px; }
+h2 { color: var(--ink); font-size: 20px; margin: 40px 0 8px; }
+h3 { color: var(--ink); font-size: 16px; margin: 24px 0 4px; }
+p, li { margin: 6px 0; }
+.meta { color: var(--muted); font-size: 14px; }
+.box { background: var(--gray); border-radius: 16px; padding: 16px 20px; margin: 16px 0; }
+table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 15px; }
+th, td { text-align: left; vertical-align: top; padding: 10px 8px; border-bottom: 1px solid var(--line); }
+th { color: var(--ink); font-weight: 600; background: var(--soft); }
+.top { display: inline-block; margin-bottom: 24px; font-size: 14px; text-decoration: none; }
+hr { border: 0; border-top: 1px solid var(--line); margin: 48px 0; }
+</style>
+</head>
+<body>
+<main>
+<a class="top" href="./">카리로 홈</a>
+<h1>카리로 개인정보처리방침</h1>
+<p class="meta">(주)고트헤이븐 · 시행일 2026년 11월 13일</p>
+
+<p>(주)고트헤이븐(이하 "회사")은 맥용 앱 카리로(CARIRO)를 운영하며 필요한 범위에서만 개인정보를 처리합니다. 카리로 계정 · 대화 · 결제 같은 카리AI 공통 항목은 <a href="https://goatheaven-inc.github.io/cari-ai-releases/console/?page=privacy">카리AI 개인정보처리방침</a>을 따르고, 이 문서는 카리로 앱이 연결하는 외부 계정, 특히 Google 사용자 데이터를 어떻게 다루는지 설명합니다.</p>
+
+<h2>1. Google 계정 연결로 받는 정보</h2>
+<p>사용자가 카리로의 일정 패널이나 홈에서 [연결하기]를 누르고 Google 동의 화면에서 허용한 경우에만 아래 권한을 받습니다. 모두 읽기 전용이며, 카리로는 Google 캘린더 · 할 일을 만들거나 고치거나 지우지 않습니다.</p>
+<table>
+<tr><th>권한(범위)</th><th>받는 정보</th><th>쓰는 곳</th></tr>
+<tr><td>기본 프로필(openid · email · profile)</td><td>Google 계정 이메일 주소, 이름, 프로필 사진</td><td>어떤 계정을 연결했는지 앱 안에서 보여 주고, 같은 계정을 두 번 연결하지 않게 구분</td></tr>
+<tr><td>Google 캘린더 읽기(calendar.readonly)</td><td>사용자가 볼 수 있는 캘린더의 일정 제목, 시간, 장소, 설명, 캘린더 이름 · 색</td><td>카리로 일정 패널 · 홈 위젯에 일정 보여 주기, 일정 시간 알림, 사용자가 켠 경우 아침 브리핑</td></tr>
+<tr><td>Google Tasks 읽기(tasks.readonly)</td><td>할 일 제목, 기한, 완료 여부</td><td>아침 브리핑의 '오늘까지 할 일'</td></tr>
+</table>
+<p>Gmail 은 Google 로그인 권한으로 읽지 않습니다. Gmail 을 연결하려면 사용자가 직접 만든 Google 앱 비밀번호를 넣어야 하고, 이 경우 메일은 사용자의 컴퓨터에서 Gmail 서버로 직접(IMAP · SMTP) 읽고 보냅니다.</p>
+
+<h2>2. 저장 위치와 보안</h2>
+<ul>
+<li>Google 로그인 토큰은 사용자의 Mac 에만 저장되며, macOS 키체인으로 보호되는 저장소에 암호화해 둡니다. 회사 서버로 보내지 않습니다.</li>
+<li>일정 · 할 일 내용은 화면에 보여 줄 때 사용자의 Mac 에서 Google 에 직접 요청해 읽고, 그 Mac 의 카리로 프로필 안에만 잠깐 보관합니다. 회사 서버에 따로 모아 두지 않습니다.</li>
+<li>카리로 프로필은 서로 분리되어 있어, 같은 Mac 의 다른 프로필이나 다른 사용자는 연결한 계정의 정보를 볼 수 없습니다.</li>
+</ul>
+
+<h2>3. AI 브리핑을 켠 경우의 전달</h2>
+<p>사용자가 설정에서 아침 브리핑과 AI 요약을 켜면, 그날의 일정 제목 · 시각과 할 일 제목을 카리AI(회사가 AWS 서울 리전에서 운영하는 AI 게이트웨이)로 보내 한 줄 요약을 만듭니다. 이 요약을 위해 회사가 계약한 AI 모델 공급자(Amazon Bedrock 등)를 거칠 수 있습니다. 이 내용은 브리핑을 만드는 데에만 쓰며, 대화 기록으로 저장하지 않고, 광고 · 판매 · AI 모델 학습에 쓰지 않습니다. AI 요약을 끄면 브리핑은 Mac 안에서 규칙으로만 만듭니다.</p>
+
+<h2>4. Google API 서비스 사용자 데이터 정책 준수</h2>
+<div class="box">
+<p>카리로가 Google API 로 받은 정보를 사용하고 다른 앱으로 전달하는 방식은 제한된 사용(Limited Use) 요구 사항을 포함한 <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API 서비스 사용자 데이터 정책</a>을 따릅니다.</p>
+</div>
+<ul>
+<li>Google 사용자 데이터는 사용자가 보는 카리로 기능(일정 보기 · 알림 · 브리핑)을 제공하고 개선하는 데에만 씁니다.</li>
+<li>판매하지 않고, 광고 · 신용 평가 · 대출 판단에 쓰지 않습니다.</li>
+<li>사용자의 동의 없이 사람이 읽지 않습니다. 보안 사고 조사나 법령 준수에 필요한 경우만 예외입니다.</li>
+<li>일반 AI · 머신러닝 모델을 학습시키는 데 쓰지 않습니다.</li>
+</ul>
+
+<h2>5. 연결 해제와 삭제</h2>
+<ul>
+<li>카리로에서 계정 연결을 해제하면, 그 Mac 에 저장한 토큰과 읽어 둔 정보를 지웁니다.</li>
+<li>Google 계정의 <a href="https://myaccount.google.com/permissions">서드 파티 액세스</a>에서 카리로의 권한을 언제든지 취소할 수 있습니다.</li>
+<li>카리로 프로필을 지우거나 앱을 지우면 그 Mac 에 남은 연결 정보도 함께 지워집니다.</li>
+</ul>
+
+<h2>6. 문의처</h2>
+<p>개인정보 보호책임자: 차형호 대표이사 · 문의 <a href="mailto:contact@goatheaven.com">contact@goatheaven.com</a> · 02-6264-1004<br>
+(주)고트헤이븐 · 사업자등록번호 177-88-02306 · 광주광역시 북구 설죽로370번길 32, 6층 602-11호</p>
+<p class="meta">내용이 바뀌면 시행일 전에 이 페이지와 앱에서 알립니다.</p>
+
+<hr>
+
+<h1 lang="en">CARIRO Privacy Policy</h1>
+<p class="meta" lang="en">GOATHEAVEN Inc. · Effective November 13, 2026</p>
+<div lang="en">
+<p>GOATHEAVEN Inc. operates CARIRO, a desktop app for macOS. This page explains how CARIRO handles Google user data. Account, conversation and payment data shared with the CARI AI service follow the <a href="https://goatheaven-inc.github.io/cari-ai-releases/console/?page=privacy">CARI AI privacy policy</a>.</p>
+
+<h2>1. Google data we access</h2>
+<p>Only after the user clicks Connect in CARIRO and approves the Google consent screen, CARIRO requests these read-only scopes. CARIRO never creates, edits or deletes Google Calendar events or Tasks.</p>
+<ul>
+<li><b>openid, email, profile</b>: the account's email address, name and photo, to show which account is connected and to avoid duplicates.</li>
+<li><b>calendar.readonly</b>: event titles, times, locations, descriptions and calendar names/colors of calendars the user can see, to show them in CARIRO's calendar panel and home widget, to send event reminders, and for the morning briefing if the user turns it on.</li>
+<li><b>tasks.readonly</b>: task titles, due dates and completion status, for the "due today" part of the morning briefing.</li>
+</ul>
+<p>CARIRO does not read Gmail through Google sign-in. To connect Gmail the user enters a Google app password they created, and mail is read and sent directly between the user's Mac and Gmail over IMAP/SMTP.</p>
+
+<h2>2. Storage and security</h2>
+<p>OAuth tokens are stored only on the user's Mac, encrypted with storage protected by the macOS Keychain, and are never sent to our servers. Calendar and task data is fetched from Google directly by the user's Mac when shown and kept only inside that CARIRO profile on that Mac. CARIRO profiles are isolated, so other profiles or users cannot see a connected account's data.</p>
+
+<h2>3. AI briefing</h2>
+<p>If the user turns on the morning briefing with AI summary, the day's event titles and times and task titles are sent to CARI AI (our AI gateway in the AWS Seoul region) and may pass through our contracted AI model providers (such as Amazon Bedrock) only to write a short summary. This content is used only to create the briefing, is not stored as conversation history, and is not used for advertising, sale, or training AI models. With AI summary off, the briefing is built on the Mac by rules only.</p>
+
+<h2>4. Limited Use</h2>
+<p>CARIRO's use and transfer to any other app of information received from Google APIs will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements. We use Google user data only to provide and improve user-facing CARIRO features, never sell it, never use it for advertising, credit or lending decisions, do not let humans read it without the user's consent (except for security or legal requirements), and do not use it to train generalized AI or machine-learning models.</p>
+
+<h2>5. Disconnect and deletion</h2>
+<p>Disconnecting an account in CARIRO deletes its tokens and cached data from that Mac. Users can also revoke CARIRO's access at any time at <a href="https://myaccount.google.com/permissions">Google Account › Third-party access</a>. Deleting the CARIRO profile or the app removes the remaining data on that Mac.</p>
+
+<h2>6. Contact</h2>
+<p>Privacy officer: Hyeongho Cha, CEO · <a href="mailto:contact@goatheaven.com">contact@goatheaven.com</a> · +82-2-6264-1004<br>
+GOATHEAVEN Inc., 32 Seoljuk-ro 370beon-gil, 6F 602-11, Buk-gu, Gwangju, Republic of Korea</p>
+</div>
+</main>
+</body>
+</html>
